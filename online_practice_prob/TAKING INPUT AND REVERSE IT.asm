@@ -1,4 +1,4 @@
-TITLE taking_input_and_reverse
+
 
 .MODEL SMALL
 .STACK 100H
