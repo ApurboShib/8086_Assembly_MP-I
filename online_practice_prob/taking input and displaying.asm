@@ -4,7 +4,7 @@ TITLE TAKING_SINGLE_CHARACTER_AND_DISPLAYING_IT
 .STACK 100H
 .DATA
  
- MSG DB "Goodbye you sacrilegious sack of shit!$"
+ MSG DB "hello programmers"
  
 .CODE
 MAIN PROC   
@@ -18,7 +18,7 @@ MAIN PROC
                             ;store it in BL
     
     
-    MOV AH, 2               ;%%%% line 16 to 20 is for a new line               
+    MOV AH, 2                            
     MOV DL, 0DH
     INT 021H
     MOV DL, 0AH
@@ -28,18 +28,18 @@ MAIN PROC
     INT 021H                ;display that shit
     
     
-    MOV AH, 2               ;NEWLINE               
+    MOV AH, 2               ;newline               
     MOV DL, 0DH
     INT 021H
     MOV DL, 0AH
     INT 021H
     
-    LEA DX, MSG             ;getting the fucking message 
-    MOV AH, 9               ;function for displaying a string
+    LEA DX, MSG             ;getting the message 
+    MOV AH, 9               ; for displaying a string
     INT 021H                ;and the display
                                             
     
-    MOV AH, 04CH            ;if anyone cares, this code returns control to DOS, i.e the OS
+    MOV AH, 04CH            
     INT 021H                
                                             
 MAIN ENDP

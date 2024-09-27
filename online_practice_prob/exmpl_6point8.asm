@@ -1,15 +1,3 @@
-TITLE EXM_SXPTEIGHT  
-
-;count-controlled loop to display a row of 80 stars
-;for loop using LOOP instruction
-
-;;;;;;;;;;;;;;;;;;;;
-
-;The LOOP instruction is applied as follows:
-    ;   LOOP destination_label 
-    
-;;;;;;;;;;;;;;;;;;;;
-
 
 
 .MODEL SMALL
