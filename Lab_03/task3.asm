@@ -22,7 +22,12 @@ MAIN PROC
     INT 21H              
     MOV BL, AL           
 
-    
+    mov ah,2
+    mov dl,0dh
+    int 21h
+    mov dl,0ah
+    int 21h 
+
     LEA DX, ans_1   
     MOV AH, 9           
     INT 21H             
@@ -45,6 +50,11 @@ MAIN PROC
    
     ADD BL, 32          
               
+    mov ah,2
+    mov dl,0dh
+    int 21h
+    mov dl,0ah
+    int 21h           
     
     LEA DX, ans_2  
     MOV AH, 9            

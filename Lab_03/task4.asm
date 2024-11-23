@@ -19,26 +19,26 @@ MAIN PROC
     INT 21H
 
     
-    MOV AH, 1              ; Read first decimal digit   
+    MOV AH, 1               
     INT 21H
-    SUB AL, 30H            ; Convert ASCII to numeric
-    MOV BL, AL             ; Store first digit in BL for calculation
-    ADD AL, 30H            ; Convert back to ASCII for display
-    MOV CL, AL             ; Store ASCII of first digit in CL
+    SUB AL, 30H            
+    MOV BL, AL            
+    ADD AL, 30H            
+    MOV CL, AL             
 
     
-    MOV AH, 1              ; Read second decimal digit
+    MOV AH, 1              
     INT 21H
-    SUB AL, 30H            ; Convert ASCII to numeric
-    MOV BH, AL             ; Store second digit in BH for calculation
-    ADD AL, 30H            ; Convert back to ASCII for display
-    MOV DL, AL             ; Store ASCII of second digit in DL
+    SUB AL, 30H            
+    MOV BH, AL             
+    ADD AL, 30H           
+    MOV DL, AL             
 
     ; Add the two digits
 
-    MOV AL, BL             ; Move first digit  to AL
-    ADD AL, BH             ; Add second digit in BH
-    ADD AL, 30H            ; Convert sum to ASCII
+    MOV AL, BL            
+    ADD AL, BH             
+    ADD AL, 30H            
 
     ; Display newline for output formatting
     LEA DX, newline

@@ -22,12 +22,12 @@ mov ah, 9
 int 21h
 
  
-mov ah, 1 ; intput
+mov ah, 1 ; intput a
 int 21h   
 
 mov bl, al 
 
-mov ah,2  ; new line
+mov ah,2  ;  print new line
 mov dl,0dh
 int 21h
 mov dl,0ah
