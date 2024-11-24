@@ -1,49 +1,52 @@
 .MODEL SMALL
 .STACK 100H
+
 .DATA
-
-is_div db " The number is divisible by 5 and 11$"
-is_not_div db " The number is not divisible by 5 and 11$"
-
-n db 25
+is_div db "The number is divisible by 5 and 11$", '$' 
+is_not_div db "The number is not divisible by 5 and 11$", '$' 
+n db 25 
 
 .CODE
 MAIN PROC
-;iniitialize DS
-MOV AX,@DATA
-MOV DS,AX
-;enter your code here
 
-mov al,[n]
-mov ah,0
-mov bl,5
-div bl
+    MOV AX, @DATA
+    MOV DS, AX
 
-cmp ah,0  
-jne not_divisible
 
-mov al,[n]
-mov ah,0
-mov bl,11
-div bl
+    MOV AL, [n]
+    MOV AH, 0         
 
-cmp ah,0
-jne not_divisible
 
-lea dx,[is_div]
-mov ah,9
-int 21h
-jmp end
+    MOV BL, 5        
+    DIV BL            
+    CMP AH, 0         
+    JNE not_divisible ; jump if not divisible by 5
+
+    MOV AL, [n]
+    MOV AH, 0        
+
+
+    MOV BL, 11        
+    DIV BL            
+    CMP AH, 0         
+    JNE not_divisible ; Jump if not divisible by 11
+
+    ; If divisible by both 5 and 11
+    LEA DX, [is_div]  
+    MOV AH, 9         
+    INT 21H           
+    JMP end           ; Skip the not_divisible part
 
 not_divisible:
-lea dx,[is_not_div]
-mov ah,9
-int 21h
+    ; If not divisible by both 
+    LEA DX, [is_not_div] 
+    MOV AH, 9           
+    INT 21H              
 
 end:
+   
+    MOV AX, 4C00H        
+    INT 21H             
 
-;exit to DOS
-MOV AX,4C00H
-INT 21H
 MAIN ENDP
 END MAIN

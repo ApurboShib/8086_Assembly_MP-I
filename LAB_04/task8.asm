@@ -19,11 +19,11 @@ int 21H
 mov ah,1
 int 21H
 mov bl,al
-
-mov dl,odh
-mov ah,2
-int 21H
-mov dl,0dh
+;new-line
+mov dl,odh      ; carraige return.
+mov ah,2        
+int 21H         
+mov dl,0dh      ; line feed.
 mov ah,2
 int 21H
 
@@ -44,8 +44,9 @@ je vowel
 cmp bl,'U'
 je vowel
 
-jmp consonent
+jmp consonent   ; jodi vowel na but still upper case then jump to the consonent lavel.
 
+;printing the results.
 consonant:
 lea dx,[c]
 mov ah,9
