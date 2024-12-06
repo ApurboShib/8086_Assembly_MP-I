@@ -1,0 +1,55 @@
+.MODEL SMALL
+.STACK 100H
+.DATA 
+
+
+
+.CODE
+MAIN PROC
+;iniitialize DS
+MOV AX,@DATA
+MOV DS,AX
+;enter your code here
+
+MOV BX, 80H
+MOV CL, 0
+    
+START:
+CMP CL, 10
+JE  NEWLINE
+INC CL
+    
+MOV AH, 2
+MOV DX, BX
+INT 21H
+    
+INC BX
+    
+CMP BX, 0FFH
+JE EXIT
+    
+JMP START
+    
+NEWLINE:
+
+MOV DL, 0AH
+MOV AH, 2
+INT 21H
+    
+MOV DL, 0DH
+MOV AH, 2
+INT 21H
+
+MOV CL, 0
+    
+JMP START
+    
+
+
+EXIT:
+
+;exit to DOS
+MOV AX,4C00H
+INT 21H
+MAIN ENDP
+END MAIN

@@ -1,0 +1,79 @@
+.MODEL SMALL
+.STACK 100H
+.DATA   
+
+  PRINT_O DB 'o$', 0 
+  PRINT_E DB 'e$', 0 
+  NEWLINE DB 0DH, 0AH, '$'
+  
+  enter db "enter a digit: $"
+
+.CODE
+MAIN PROC
+;iniitialize DS
+MOV AX,@DATA
+MOV DS,AX
+;enter your code here
+
+
+
+LEA DX, enter
+MOV AH, 9 
+INT 21H
+
+MOV AH, 1        ;INTPUT
+INT 21H 
+SUB AL, '0'
+
+CMP AL, 1        ;IF 1
+JE DISPLAY_O
+
+
+CMP AL, 3        ;IF 3
+JE DISPLAY_O
+
+
+
+CMP AL, 2        ;IF 2
+JE DISPLAY_E
+
+
+
+CMP AL, 4        ;IF 4
+JE DISPLAY_E
+
+
+JMP END_IF
+
+DISPLAY_O:
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, PRINT_O
+MOV AH, 9
+INT 21H
+
+JMP END_IF 
+
+
+DISPLAY_E:
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, PRINT_E
+MOV AH, 9
+INT 21H
+
+
+
+
+END_IF:
+;exit to DOS
+MOV AX,4C00H
+INT 21H
+MAIN ENDP
+END MAIN

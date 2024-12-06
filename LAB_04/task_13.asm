@@ -1,0 +1,155 @@
+                            .MODEL SMALL
+.STACK 100H
+.DATA
+                
+       INPUT    DB  "ENTER A DIGIT 1-7 : $" 
+       SAT      DB 'Saturday$'  
+       SUN      DB 'Sunday$'
+       MON      DB 'Monday$'
+       TUE      DB 'Tuesday$'
+       WED      DB 'Wednesday$'
+       THU      DB 'Thursday$'
+       FRI      DB 'Friday$'
+       
+       NEWLINE  DB 0DH, 0AH, '$'
+    
+.CODE
+MAIN PROC
+;iniitialize DS
+MOV AX,@DATA
+MOV DS,AX
+;enter your code here
+
+
+LEA DX, INPUT  ; PROMPT
+MOV AH, 9
+INT 21H
+
+MOV AH, 1       ; INPUT
+INT 21H
+SUB AL, '0'       ; CONVERT
+
+MOV BL , AL      ; COPY IN BL
+
+
+
+CMP AL, 1
+JE  SATURDAY    
+
+
+CMP AL, 2
+JE  SUNDAY
+
+
+CMP AL, 3
+JE  MONDAY
+
+CMP AL, 4
+JE  TUESDAY
+
+CMP AL, 5
+JE  WEDNESDAY
+
+CMP AL, 6
+JE  THURSDAY
+
+
+CMP AL, 7
+JE  FRIDAY  
+
+
+
+
+SATURDAY: 
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, SAT
+MOV AH, 9
+INT 21H  
+JMP EXIT 
+
+
+SUNDAY:
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, SUN
+MOV AH, 9
+INT 21H  
+JMP EXIT  
+
+MONDAY:
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, MON
+MOV AH, 9
+INT 21H   
+JMP EXIT  
+
+TUESDAY:
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, TUE
+MOV AH, 9
+INT 21H   
+JMP EXIT  
+
+WEDNESDAY:
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, WED
+MOV AH, 9
+INT 21H 
+JMP EXIT  
+
+
+THURSDAY:
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, THU
+MOV AH, 9
+INT 21H
+JMP EXIT  
+
+
+FRIDAY: 
+
+LEA DX, NEWLINE
+MOV AH, 9
+INT 21H
+
+LEA DX, FRI
+MOV AH, 9
+INT 21H 
+
+
+
+
+
+
+
+
+
+EXIT: 
+;exit to DOS
+MOV AX,4C00H
+INT 21H
+MAIN ENDP
+END MAIN

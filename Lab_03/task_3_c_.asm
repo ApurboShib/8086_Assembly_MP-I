@@ -1,0 +1,39 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+
+.CODE
+MAIN PROC
+;iniitialize DS
+MOV AX,@DATA
+MOV DS,AX
+;enter your code here
+
+MOV AH , 1 ; INPUT
+INT 21H
+
+
+
+MOV BL, AL     ; STORE IN BL
+ADD BL, 20H    ; COVERT IN SMALL
+
+
+MOV AH, 2
+MOV DL, 0AH    ; NICHE LAMSE
+INT 21H 
+
+
+MOV AH , 2     ; OUTPUT SMALL
+MOV DL, BL
+INT 21H
+
+
+
+
+
+
+;exit to DOS
+MOV AX,4C00H
+INT 21H
+MAIN ENDP
+END MAIN
